@@ -11,7 +11,7 @@ $blue: #377DFF;
 
 body {
     font-size: rem(16);
-    background-color: #fff;
+    background-color: #f5f5f5;
     font-family: $mainFont;
     color: $gray;
 
@@ -181,7 +181,7 @@ body {
     transition: background-color 0.4s ease 0s;
 
     &.header-scroll {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: #f5f5f5cc;
     }
 
     // .header__container
@@ -324,7 +324,7 @@ body {
                 left: -120%;
                 width: 100%;
                 @include adaptive-value("min-height", 190, 100);
-                background-color: #fff;
+                background-color: #f5f5f5;
                 z-index: 2;
                 transition: left 0.5s ease;
 
@@ -979,5 +979,273 @@ body {
         font-weight: 700;
         @include adaptive-value("font-size", 24, 16);
         line-height: percent(34, 24);
+        text-transform: capitalize;
+    }
+}
+
+// ==================================================================== Portfolio =======================================================
+.portfolio {
+    @include adaptive-value("padding-bottom", 200, 100);
+    // .portfolio__container
+
+    &__container {
+        text-align: center;
+        display: grid;
+        justify-items: center;
+    }
+
+    // .portfolio__header-block
+
+    &__header-block {
+        &:not(:last-child) {
+            @include adaptive-value("margin-bottom", 28, 34);
+        }
+    }
+
+    // .portfolio__text
+
+    &__text {
+        max-width: rem(675);
+
+        &:not(:last-child) {
+            @include adaptive-value("margin-bottom", 48, 34);
+        }
+    }
+
+    // .portfolio__items
+
+    &__items {
+        display: grid;
+        grid-template-columns: percent(350, 1240) percent(400, 1240) percent(350, 1240);
+        justify-content: space-between;
+        align-items: center;
+
+        &:not(:last-child) {
+            @include adaptive-value("margin-bottom", 34, 48);
+        }
+
+        @media (max-width: em(991.98)) {
+            grid-template-columns: auto;
+            justify-items: center;
+            @include adaptive-value("row-gap", 54, 30, 0, 390, 320);
+        }
+    }
+
+    // .portfolio__item
+
+    &__item {}
+
+    // .portfolio__button
+
+    &__button {
+        display: inline-block;
+    }
+}
+
+.item-portfolio {
+    aspect-ratio: 1 / 1;
+    position: relative;
+
+    @media (max-width: em(991.98)) {
+        width: 83.5%;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: rem(30);
+        background-color: #000;
+        opacity: 0.15;
+        z-index: 2;
+    }
+
+    &:nth-of-type(2) {
+
+        &::before {
+            background: url('/img/about/decor-pink.svg') no-repeat;
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: rem(100);
+            height: rem(71);
+            transform: translate(percent(-32, 100), percent(78, 71)) rotate(20deg);
+            z-index: -1;
+
+            @media (max-width: em(991.98)) {
+                display: none;
+            }
+        }
+
+        @media (max-width: em(991.98)) {
+            width: 95%;
+        }
+    }
+
+    &:nth-of-type(3) {
+        &::before {
+            background: url('/img/about/decor-pink.svg') no-repeat;
+            position: absolute;
+            content: '';
+            top: 0;
+            right: 0;
+            width: rem(100);
+            height: rem(71);
+            transform: translate(percent(5, 100), percent(-148, 71)) rotate(-200deg);
+            z-index: -1;
+
+            @media (max-width: em(991.98)) {
+                display: none;
+            }
+        }
+    }
+
+    // .item-portfolio__image
+
+    &__image {
+        border-radius: rem(30);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+
+    // .item-portfolio__label
+
+    &__label {
+        text-align: left;
+        position: absolute;
+        bottom: percent(50, 350);
+        left: percent(24, 350);
+        font-weight: 700;
+        color: #fff;
+        z-index: 3;
+        line-height: 130%;
+    }
+}
+
+// ==================================================================== Testimonial =======================================================
+.testimonial {
+    @include adaptive-value("padding-bottom", 240, 100);
+
+    // .testimonial__container
+
+    &__container {
+        text-align: center;
+    }
+
+    // .testimonial__header-block
+
+    &__header-block {
+        &:not(:last-child) {
+            @include adaptive-value("margin-bottom", 50, 35);
+        }
+    }
+
+    // .testimonial__items
+
+    &__items {
+        display: flex;
+        @include adaptive-value("column-gap", 50, 20, 2, $containerWidth, 991.98);
+        gap: rem(50);
+        justify-content: center;
+    }
+
+    // .testimonial__item
+
+    &__item {}
+}
+
+.item-testimonial {
+    flex: 0 1 33.333%;
+    @include adaptive-value("padding-top", 50, 40);
+    padding-left: rem(40);
+    padding-bottom: rem(40);
+    padding-right: rem(20);
+    aspect-ratio: 380 / 335;
+    border-radius: rem(20);
+    background-color: #fff;
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, .05);
+    text-align: left;
+
+    @media (max-width: em(991.98)) {
+        flex: 0 1 50%;
+        aspect-ratio: inherit;
+
+        &:last-of-type {
+            display: none;
+        }
+    }
+
+    @media (max-width: em(767.98)) {
+        flex: 0 1 percent(370, 390);
+
+        &:not(:first-of-type) {
+            display: none;
+        }
+    }
+
+
+    // .item-testimonial__header
+
+    &__header {
+        display: flex;
+        gap: rem(30);
+        align-items: center;
+
+        &:not(:last-child) {
+            @include adaptive-value("margin-bottom", 35, 25);
+        }
+    }
+
+    // .item-testimonial__image
+
+    &__image {
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        overflow: hidden;
+        width: rem(70);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // .item-testimonial__info
+
+    &__info {}
+
+    // .item-testimonial__name
+
+    &__name {
+        text-transform: capitalize;
+        color: $blue;
+        font-weight: 600;
+        font-size: rem(19);
+        line-height: percent(28, 20);
+
+        &:not(:last-child) {
+            margin-bottom: rem(4);
+        }
+    }
+
+    // .item-testimonial__job
+
+    &__job {
+        color: $gray;
+        font-size: rem(11);
+    }
+
+    // .item-testimonial__text
+
+    &__text {
+        color: $gray;
+        @include adaptive-value("font-size", 18, 14);
     }
 }
